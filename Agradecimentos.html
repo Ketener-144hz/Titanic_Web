@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Made By Ketener</title>
+    <link rel="icon" href="./Image/icon/Icon].jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Text:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --blood-red: #8b0000;
+            --dark-red: #660000;
+            --plastic-white: rgba(255, 255, 255, 0.95);
+            --shadow-red: rgba(139, 0, 0, 0.4);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: var(--plastic-white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Special Elite', cursive;
+            overflow-x: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.92)),
+                        url('./Image/Image_Agradecimentos/plastic-sheets.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .blood-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .blood-drop {
+            position: absolute;
+            width: 2px;
+            background: var(--blood-red);
+            opacity: 0;
+            transform-origin: top;
+            animation: bloodDrip 3s ease-in infinite;
+        }
+
+        @keyframes bloodDrip {
+            0% { 
+                transform: scaleY(0);
+                opacity: 0;
+            }
+            5% {
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.9;
+            }
+            90% {
+                opacity: 0.9;
+            }
+            100% { 
+                transform: scaleY(100);
+                opacity: 0;
+            }
+        }
+
+        .profile-wrapper {
+            text-align: center;
+            padding: 40px;
+            border-radius: 8px;
+            background-color: rgba(10, 10, 10, 0.97);
+            max-width: 600px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px var(--shadow-red);
+            border: 2px solid var(--blood-red);
+            margin: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                transparent 0%,
+                var(--blood-red) 50%,
+                transparent 100%);
+            z-index: -1;
+            border-radius: 10px;
+            opacity: 0.5;
+            animation: borderGlow 4s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 20px auto;
+            border: 4px solid var(--blood-red);
+            box-shadow: 0 0 30px var(--shadow-red);
+            transition: all 0.4s ease;
+            filter: grayscale(20%);
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            filter: grayscale(0%);
+            border-color: var(--dark-red);
+            box-shadow: 0 0 40px var(--blood-red);
+        }
+
+        h1 {
+            font-size: 2.8em;
+            margin: 25px 0;
+            color: var(--plastic-white);
+            text-shadow: 0 0 10px var(--blood-red);
+        }
+
+        p {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin: 15px 0;
+            color: var(--plastic-white);
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--blood-red);
+            margin: 30px 0;
+            padding: 20px;
+            position: relative;
+            text-shadow: 0 0 10px var(--shadow-red);
+            font-size: 1.3em;
+        }
+
+        .quote::before,
+        .quote::after {
+            content: '"';
+            font-size: 2em;
+            position: absolute;
+            opacity: 0.6;
+        }
+
+        .quote::before {
+            left: 0;
+            top: 0;
+        }
+
+        .quote::after {
+            right: 0;
+            bottom: -20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: var(--plastic-white);
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            padding: 12px 25px;
+            border: 1px solid var(--blood-red);
+            border-radius: 5px;
+            background: rgba(139, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .social-link i {
+            font-size: 1.2em;
+        }
+
+        .social-link:hover {
+            color: var(--blood-red);
+            background: rgba(139, 0, 0, 0.2);
+            box-shadow: 0 0 20px var(--shadow-red);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .profile-wrapper {
+                margin: 10px;
+                padding: 20px;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .quote {
+                font-size: 1.1em;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blood-container"></div>
+    <div class="profile-wrapper">
+        <img src="./Image/icon/Icon_Creditos.jpg" class="profile-image" alt="Dark Passenger">
+        <h1>Dark Passenger</h1>
+        <p class="quote">"Tonight's the night. And it's going to happen again and again."</p>
+        <p>Olá. Eu sou João Gabriel, seu guia nesta jornada sombria pela história do Titanic.
+            Como Dexter Morgan, tenho meu próprio código: a busca pela verdade histórica.
+        </p>
+        <p>
+            Este projeto é minha <span class="code">lâmina afiada</span> contra o esquecimento,
+            preservando as memórias daqueles que se perderam nas profundezas do oceano.
+        </p>
+        <p>
+            Assim como Dexter tem seu "Passageiro das Trevas",
+            eu tenho minha obsessão por contar esta história da maneira mais precisa possível.
+        </p>
+        
+        <div class="social-links">
+            <a href="https://github.com/Ketener-144hz" class="social-link" target="_blank">
+                <i class="fab fa-github"></i>
+                GitHub
+            </a>
+            <a href="https://www.instagram.com/jaozin_10fpss/?locale=en_CA" class="social-link" target="_blank">
+                <i class="fab fa-instagram"></i>
+                Instagram
+            </a>
+            <a href="https://open.spotify.com/user/3165k546xl3mpatikxm3pdwfrb3a?si=4d49253599324a07" class="social-link" target="_blank">
+                <i class="fab fa-spotify"></i>
+                Spotify
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScZzBln34qdJizxTT0I1YEdIExntMT0_p2uordorxH7Z2Vrkg/viewform" class="social-link" target="_blank">
+                <i class="fas fa-comment-dots"></i>
+                Sugestões
+            </a>
+        </div>
+        <p class="signature">- Ketener</p>
+        <a href="Titanic_Home.html" class="nav-button">Retornar ao Início</a>
+    </div>
+
+    <script>
+        function createBloodDrops() {
+            const container = document.querySelector('.blood-container');
+            const numDrops = 12;
+            
+            function createDrops() {
+                for (let i = 0; i < numDrops; i++) {
+                    setTimeout(() => {
+                        createSingleDrop(container);
+                    }, i * 300);
+                }
+            }
+
+            createDrops();
+
+            setInterval(() => {
+                const drops = document.querySelectorAll('.blood-drop');
+                if (drops.length < numDrops) {
+                    createSingleDrop(container);
+                }
+            }, 3000);
+        }
+
+        function createSingleDrop(container) {
+            const drop = document.createElement('div');
+            drop.className = 'blood-drop';
+            
+            const x = Math.random() * window.innerWidth;
+            const height = Math.random() * 80 + 60;
+            const delay = Math.random() * 2;
+            
+            drop.style.left = `${x}px`;
+            drop.style.height = `${height}px`;
+            drop.style.animationDelay = `${delay}s`;
+            
+            container.appendChild(drop);
+            
+            drop.addEventListener('animationend', () => {
+                drop.remove();
+            });
+        }
+
+        window.onload = createBloodDrops;
+    </script>
+</body>
+</html>

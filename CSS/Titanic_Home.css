@@ -1,0 +1,312 @@
+@import url('common.css');
+
+/* Variáveis específicas da página */
+:root {
+    --home-primary: #c0a167;
+    --home-secondary: #8b0000;
+    --home-bg: rgba(10, 23, 33, 0.95);
+    --home-text: #e0e0e0;
+    --home-accent: #e5c992;
+    --home-gradient: linear-gradient(
+        to bottom,
+        rgba(26, 58, 90, 0.95),
+        rgba(12, 31, 46, 0.98),
+        rgba(10, 23, 33, 0.99)
+    );
+}
+
+body {
+    background: var(--home-gradient);
+    color: var(--home-text);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Efeito de estrelas */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkle 4s ease-in-out infinite;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.4; }
+}
+
+/* Header e Navegação */
+.navbar {
+    background: var(--home-bg);
+    border-bottom: 2px solid var(--home-primary);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    height: 60px;
+}
+
+.ImgNavbar {
+    height: 100%;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.ImgNavbar:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--home-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--home-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Conteúdo Principal */
+.HeaderConteudo {
+    padding-top: 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+    text-align: center;
+}
+
+.H1Resumo {
+    color: var(--home-primary);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Container de Citação */
+.quote-container {
+    margin: 3rem auto;
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--home-primary);
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--home-accent);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Container de Vídeo */
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fadeIn 1s ease-out 1s both;
+}
+
+.video-container::before {
+    content: '';
+    display: block;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media (max-width: 1024px) {
+    .video-container {
+        max-width: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .video-container {
+        max-width: 75%;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        max-width: 85%;
+        margin: 1.5rem auto;
+    }
+}
+
+/* Seção de Destaques */
+.highlights-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 4rem auto;
+    padding: 0 1rem;
+    animation: fadeIn 1s ease-out 1.5s both;
+}
+
+.highlight-card {
+    background: var(--home-bg);
+    border: 1px solid var(--home-primary);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(192, 161, 103, 0.2);
+}
+
+.highlight-card h2 {
+    color: var(--home-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.highlight-card p {
+    color: var(--home-text);
+    line-height: 1.6;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Footer */
+.footDireitos {
+    background: var(--home-bg);
+    border-top: 2px solid var(--home-primary);
+    padding: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.PDireitos {
+    color: var(--home-primary);
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .HeaderConteudo {
+        padding: 5rem 1rem 1rem;
+    }
+
+    .H1Resumo {
+        font-size: 2rem;
+    }
+
+    .quote-container {
+        padding: 1.5rem;
+    }
+
+    blockquote {
+        font-size: 1.2rem;
+    }
+}
+
+/* Efeito de Profundidade */
+.depth-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(10, 23, 33, 0.3)
+    );
+    pointer-events: none;
+    z-index: -1;
+}

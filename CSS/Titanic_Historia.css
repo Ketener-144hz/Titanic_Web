@@ -1,0 +1,313 @@
+@import url('common.css');
+
+/* Variáveis específicas da página */
+:root {
+    --history-primary: #c0a167;
+    --history-secondary: #8b0000;
+    --history-bg: rgba(10, 23, 33, 0.95);
+    --history-text: #e0e0e0;
+    --history-accent: #e5c992;
+    --history-gradient: linear-gradient(
+        to bottom,
+        rgba(26, 58, 90, 0.95),
+        rgba(12, 31, 46, 0.98),
+        rgba(10, 23, 33, 0.99)
+    );
+}
+
+body {
+    background: var(--history-gradient);
+    color: var(--history-text);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Efeito de estrelas */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkle 4s ease-in-out infinite;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.4; }
+}
+
+/* Header e Navegação */
+.navbar {
+    background: var(--history-bg);
+    border-bottom: 2px solid var(--history-primary);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    height: 60px;
+}
+
+.ImgNavbar {
+    height: 100%;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.ImgNavbar:hover {
+    transform: scale(1.05);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--history-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--history-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Conteúdo Principal */
+.HeaderConteudo {
+    padding-top: 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+    text-align: center;
+}
+
+.H1Resumo {
+    color: var(--history-primary);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Container de Citação */
+.quote-container {
+    margin: 3rem auto;
+    max-width: 800px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid var(--history-primary);
+    animation: fadeIn 1s ease-out 0.5s both;
+}
+
+blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: var(--history-accent);
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Seções de Conteúdo */
+.content-section {
+    background: var(--history-bg);
+    border: 1px solid var(--history-primary);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 3rem auto;
+    max-width: 1000px;
+    text-align: left;
+    animation: fadeIn 1s ease-out;
+}
+
+.section-title {
+    color: var(--history-primary);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.p_hist {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    color: var(--history-text);
+}
+
+/* Containers de Imagem e Vídeo */
+.img-container, .video-container {
+    margin: 2rem auto;
+    max-width: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.img-container img, .video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.img-container:hover img {
+    transform: scale(1.02);
+}
+
+@media (max-width: 768px) {
+    .img-container, .video-container {
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .img-container, .video-container {
+        max-width: 90%;
+    }
+}
+
+/* Especificações Técnicas */
+.specs-container {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 2rem;
+    margin: 2rem 0;
+}
+
+.specs-container h3 {
+    color: var(--history-primary);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.specs-list {
+    list-style: none;
+    padding: 0;
+}
+
+.specs-list li {
+    padding: 0.5rem 0;
+    color: var(--history-text);
+    font-size: 1.1rem;
+}
+
+/* Lista de Curiosidades */
+.facts-list {
+    list-style: none;
+    padding: 0;
+}
+
+.facts-list li {
+    position: relative;
+    padding: 0.8rem 0 0.8rem 2rem;
+    font-size: 1.1rem;
+}
+
+.facts-list li::before {
+    content: '•';
+    color: var(--history-primary);
+    position: absolute;
+    left: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* Footer */
+.footDireitos {
+    text-align: center;
+    padding: 2rem;
+    background: var(--history-bg);
+    border-top: 2px solid var(--history-primary);
+    margin-top: 4rem;
+}
+
+.PDireitos {
+    color: var(--history-primary);
+    margin: 0.5rem 0;
+}
+
+/* Animações */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .HeaderConteudo {
+        padding: 5rem 1rem 2rem;
+    }
+
+    .content-section {
+        padding: 1.5rem;
+        margin: 2rem 1rem;
+    }
+
+    .H1Resumo {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}

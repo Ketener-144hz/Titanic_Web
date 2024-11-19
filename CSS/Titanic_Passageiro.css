@@ -1,0 +1,405 @@
+@import url('common.css');
+
+/* Variáveis específicas da página */
+:root {
+    --passenger-primary: #c0a167;
+    --passenger-secondary: #8b0000;
+    --passenger-bg: rgba(10, 23, 33, 0.95);
+    --passenger-text: #e0e0e0;
+    --passenger-accent: #e5c992;
+    --passenger-gradient: linear-gradient(
+        to bottom,
+        rgba(26, 58, 90, 0.95),
+        rgba(12, 31, 46, 0.98),
+        rgba(10, 23, 33, 0.99)
+    );
+}
+
+body {
+    background: var(--passenger-gradient);
+    color: var(--passenger-text);
+    font-family: 'Playfair Display', serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Efeito de estrelas */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    animation: twinkle 4s ease-in-out infinite;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: -1;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.4; }
+}
+
+/* Header e Navegação */
+.navbar {
+    background: var(--passenger-bg);
+    border-bottom: 2px solid var(--passenger-primary);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    height: 60px;
+}
+
+.ImgNavbar {
+    height: 100%;
+    width: auto;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: var(--passenger-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--passenger-primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Conteúdo Principal */
+.main-content {
+    padding-top: 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem 2rem;
+}
+
+.section-title {
+    color: var(--passenger-primary);
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 2rem 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+}
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 3px;
+    background: var(--passenger-primary);
+    margin: 1rem auto;
+}
+
+/* Grid de Passageiros */
+.passenger-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.passenger-card {
+    background: var(--passenger-bg);
+    border: 1px solid var(--passenger-primary);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.passenger-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(192, 161, 103, 0.2);
+}
+
+.passenger-image-container {
+    position: relative;
+    padding-top: 100%; /* Square aspect ratio (1:1) */
+    overflow: hidden;
+    background-color: var(--passenger-bg);
+}
+
+.passenger-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; /* Focus on the top part of images (faces) */
+    transition: transform 0.5s ease;
+}
+
+.passenger-card:hover .passenger-image {
+    transform: scale(1.1);
+}
+
+.passenger-info {
+    padding: 1.5rem;
+}
+
+.passenger-name {
+    color: var(--passenger-primary);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.passenger-class {
+    color: var(--passenger-accent);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.passenger-details {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--passenger-text);
+}
+
+/* Personagens do Filme */
+.movie-characters {
+    margin-top: 4rem;
+}
+
+.movie-card {
+    background: linear-gradient(
+        to bottom,
+        rgba(139, 0, 0, 0.1),
+        var(--passenger-bg)
+    );
+}
+
+.movie-card .passenger-name {
+    color: var(--passenger-accent);
+}
+
+.movie-card .passenger-image-container {
+    padding-top: 120%; /* Proporção mais alta para fotos de filme */
+    border-bottom: 2px solid var(--passenger-primary);
+}
+
+.movie-card .passenger-image {
+    object-position: center 15%; /* Ajuste fino para fotos de personagens */
+}
+
+.movie-card:hover .passenger-image {
+    transform: scale(1.08); /* Efeito hover mais suave */
+}
+
+.movie-card .passenger-info {
+    background: linear-gradient(
+        to bottom,
+        rgba(139, 0, 0, 0.05),
+        rgba(10, 23, 33, 0.95)
+    );
+}
+
+/* Footer */
+.footDireitos {
+    background: var(--passenger-bg);
+    border-top: 2px solid var(--passenger-primary);
+    padding: 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.PDireitos {
+    color: var(--passenger-primary);
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
+    .main-content {
+        padding: 5rem 1rem 1rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .passenger-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animações */
+.passenger-card {
+    opacity: 0;
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efeito de Profundidade */
+.depth-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(10, 23, 33, 0.3)
+    );
+    pointer-events: none;
+    z-index: -1;
+}
+
+.HeaderConteudo {
+    background-color: rgba(242, 242, 242, 0.1);
+    margin: 30px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.H2 {
+    text-align: center;
+    font-size: 45px;
+    color: #c0a167;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.DivPerfil {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.DivPerfil:hover {
+    transform: translateY(-5px);
+}
+
+.Imgs {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.Imgs img {
+    width: 400px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.Imgs img:hover {
+    transform: scale(1.05);
+}
+
+.H1 {
+    font-size: 32px;
+    color: #c0a167;
+    margin: 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.DivResumo {
+    max-width: 800px;
+    text-align: center;
+}
+
+.p_perfil {
+    font-size: 20px;
+    line-height: 1.6;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.HR {
+    background: linear-gradient(to right, transparent, #c0a167, transparent);
+    height: 2px;
+    border: none;
+    margin: 3rem 0;
+}
+
+.footDireitos {
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px 0;
+    text-align: center;
+    border-top: 2px solid #c0a167;
+}
+
+.PDireitos {
+    color: #c0a167;
+    font-size: 20px;
+}
